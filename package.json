@@ -1,6 +1,6 @@
 {
   "name": "free-box-vue",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "dist/free-box.umd.js",
   "unpkg": "dist/free-box.umd.min.js",
   "types": "dist/types/index.d.ts",
