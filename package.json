@@ -6,9 +6,7 @@
   "types": "dist/types/index.d.ts",
   "files": [
     "dist",
-    "packages",
-    "README",
-    "package.json"
+    "README"
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
