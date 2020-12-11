@@ -1,9 +1,8 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 
-// 导入组件库
-import fb from '../packages';
+import router from './router';
 
 createApp(App)
-  .use(fb)
+  .use(router)
   .mount('#app');
