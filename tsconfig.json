@@ -13,9 +13,26 @@
     "lib": [
       "ESNext", "DOM"
     ],
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
   },
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "include": [
+    "examples/**/*.ts",
+    "examples/**/*.tsx",
+    "examples/**/*.vue",
+  ],
+  "paths": {
+    "@/*": [
+      "examples/*"
+    ],
+    "packages/*": [
+      "packages/*"
+    ],
+    "styles/*": [
+      "styles/*"
+    ]
+  },
  }
