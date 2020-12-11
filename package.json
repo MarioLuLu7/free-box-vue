@@ -15,12 +15,11 @@
     "types": "gulp -f ./script/gulpfile.js types",
     "lib": "vue-cli-service build --target lib --name free-box packages/index.ts && vue-cli-service build --all --no-clean"
   },
-  "dependencies": {
-    "core-js": "^3.6.5",
-    "vue": "3.0.0",
-    "vue-router": "4"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "core-js": "^3.6.5",
+    "vue": "^3.0.0",
+    "vue-router": "4",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "@typescript-eslint/parser": "^2.33.0",
     "@vue/cli-plugin-babel": "^4.5.0",
@@ -42,7 +41,10 @@
     "rimraf": "^3.0.2",
     "typescript": "~3.9.3"
   },
-  "description": "## Project setup ``` yarn install ```",
+  "description": "vue compnents",
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
   "directories": {
     "example": "examples"
   },
