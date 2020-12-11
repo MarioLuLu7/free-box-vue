@@ -1,16 +1,26 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 
-function resolve(filePath) {
-  return path.join(__dirname, filePath);
+function resolve(dir) {
+  return path.join(__dirname, dir);
 }
 
 module.exports = {
   publicPath: '/',
-  chainWebpack: (config) => {
-    config.resolve.alias
-      .set('packages', resolve('packages'))
-      .set('comp', resolve('src/components'))
-      .set('style', resolve('styles'));
+  configureWebpack: {
+    resolve: {
+      alias: {
+        '@': resolve('../examples'),
+        packages: resolve('../packages'),
+        styles: resolve('../styles'),
+      },
+    },
+  },
+  css: {
+    loaderOptions: {
+      sass: {
+        additionalData: `@import "styles/common.scss";`,
+      },
+    },
   },
 };

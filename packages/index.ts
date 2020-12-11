@@ -1,8 +1,9 @@
 import { App } from 'vue';
 
 import fbButton from './Button';
+import fbDrawer from './Drawer';
 
-const components = [fbButton];
+const components = [fbButton, fbDrawer];
 
 const install = (app: App) => {
   components.forEach((item) => {
@@ -11,9 +12,10 @@ const install = (app: App) => {
 };
 
 export const Button = fbButton;
+export const Drawer = fbDrawer;
 
 export default {
-  version: '1.0.0',
   install,
   Button: fbButton,
+  Drawer: fbDrawer,
 };
