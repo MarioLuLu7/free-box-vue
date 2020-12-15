@@ -1,62 +1,30 @@
-import { defineComponent, ref, PropType, DefineComponent, Plugin } from 'vue';
-import './style.scss';
+import { defineComponent, PropType, Plugin } from 'vue';
+import { useView } from './useView';
+import DrawerMain from './DrawerMain';
+import { useVNode } from './useVNode';
+import { commonProps } from './commonProps';
 
-export interface IviewConfig {
-  name: string;
-  view: DefineComponent<any, any, any>;
-}
-
-export interface Iview {
-  name: string;
-  props: Record<string, any>;
-  width: number;
-}
-
-const views = ref<Iview[]>([]);
-
-const openView = (name: string, width: number, props: any) => {
-  views.value.push({
-    name,
-    props,
-    width,
-  });
-};
+const viewUseTemp = useView();
 
 const Drawer = defineComponent({
   name: 'fbDrawer',
-  openView,
+  Main: DrawerMain,
+  useView,
   props: {
-    viewConfig: {
-      type: Array as PropType<IviewConfig[]>,
-      defalut: () => [],
+    viewUse: {
+      type: Object as PropType<typeof viewUseTemp>,
+      defalut: () => viewUseTemp,
     },
+    ...commonProps,
   },
   setup(props) {
-    const getView = (name: string) => {
-      const { viewConfig } = props;
-      for (let i = 0; i < viewConfig.length; i++) {
-        if (viewConfig[i].name === name) {
-          return viewConfig[i].view;
-        }
-      }
-    };
-
-    return () => (
-      <div class="fb-drawer">
-        {views.value.map((item) => {
-          const View = getView(item.name);
-          return (
-            <div class="fb-drawer-item" style={{ width: `${item.width}px` }}>
-              <View {...item.props} />
-            </div>
-          );
-        })}
-      </div>
-    );
+    const VNodeUse = useVNode(props, props.viewUse);
+    return () => VNodeUse.viewsVNode.value;
   },
 });
 
 export default Drawer as typeof Drawer &
   Plugin & {
-    readonly openView: typeof openView;
+    readonly Main: typeof DrawerMain;
+    readonly useView: typeof useView;
   };
